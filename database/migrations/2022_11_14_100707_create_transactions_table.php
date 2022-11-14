@@ -18,7 +18,7 @@ class CreateTransactionsTable extends Migration
             $table->string('type', 30);
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('wallet_id');
-            $table->unsignedBigInteger('deposit_id');
+            $table->unsignedBigInteger('deposit_id')->nullable();
             $table->double('amount', 10, 0);
             $table->timestamps();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('CASCADE');

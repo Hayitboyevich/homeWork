@@ -44,11 +44,10 @@ class AuthController extends Controller
 
     public function login(Request $request)
     {
-
+        $this->validate($request, ['email' => 'required|email', 'password' => 'required']);
+        $user = $request->all();
+        Auth::attempt($user);
+        return redirect('/home');
     }
 
-    public function logout(Request $request)
-    {
-
-    }
 }
