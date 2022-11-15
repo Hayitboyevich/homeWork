@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DepositsController;
 use App\Http\Controllers\WalletsController;
+use App\Http\Controllers\TransactionsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,20 +23,28 @@ Auth::routes();
 
 Route::post('register', [AuthController::class, 'register'])->name('registerForm');
 Route::post('login', [AuthController::class, 'login'])->name('loginForm');
-Route::get('/deposit/create', [DepositsController::class, 'create'])->name('deposit.create');
-Route::post('/deposit/store', [DepositsController::class, 'store'])->name('deposit.store');
-Route::get('/deposit/take', [DepositsController::class, 'take'])->name('deposit.take');
+
+Route::group([
+    'middleware' => 'auth'
+], function (){
+    Route::get('/deposit', [DepositsController::class, 'index'])->name('deposit.index');
+    Route::post('/deposit/store', [DepositsController::class, 'store'])->name('deposit.store');
+
+    Route::get('/transaction', [TransactionsController::class, 'index'])->name('transaction.index');
 
 
-Route::get('/wallet', [WalletsController::class, 'index'])->name('wallet.index');
-Route::post('/wallet/store', [WalletsController::class, 'store'])->name('wallet.store');
+    Route::get('/wallet', [WalletsController::class, 'index'])->name('wallet.index');
+    Route::post('/wallet/store', [WalletsController::class, 'store'])->name('wallet.store');
+    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+});
 
 
 
 
 
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
 
 
 

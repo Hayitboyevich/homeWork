@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\WalletRequest;
 use App\Models\Transaction;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -11,10 +12,11 @@ class WalletsController extends Controller
 {
     public function index(Request $request)
     {
-        return view('wallet.index');
+        $wallet = Auth::user()->wallet;
+        return view('wallet.index', compact('wallet'));
     }
 
-    public function store(Request $request)
+    public function store(WalletRequest $request)
     {
         DB::beginTransaction();
         try {

@@ -18,6 +18,7 @@ class CreateDepositsTable extends Migration
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('wallet_id');
             $table->double('invested',10, 0);
+            $table->double('percent',10, 0);
             $table->smallInteger('active')->default(0);
             $table->smallInteger('duration')->default(0);
             $table->smallInteger('accrue_times')->default(0);
