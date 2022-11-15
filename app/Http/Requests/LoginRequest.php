@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class WalletRequest extends FormRequest
+class LoginRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,17 +24,19 @@ class WalletRequest extends FormRequest
     public function rules()
     {
         return [
-            'wallet' => 'required|numeric',
+            'email' => 'required|email|unique:users',
+            'password' => 'required|min:6|confirmed',
         ];
     }
-
     public function messages()
     {
         return [
-            'wallet.required' => 'Wallet to\'ldirilishi kerak',
-            'wallet.numeric' => 'Son kiriting',
+            'email.required' => 'Email to\'ldirilishi kerak',
+            'email.email' => 'Email kiriting',
+            'password.required' => 'Password to\'ldirilishi kerak',
+            'password.min' => 'Kamida 6ta belgi kiriting',
+            'password.confirmed' => 'Tasdiqlash noto\'g\'ri',
         ];
     }
-
 
 }

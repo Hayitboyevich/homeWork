@@ -47,10 +47,14 @@
                                         <input type="email" class="form-control form-control-user"
                                                id="exampleInputEmail" aria-describedby="emailHelp"
                                                placeholder="Enter Email Address...">
+                                        {!! $errors->first('email', '<span class="text-danger"><h6>:message</h6></span>') !!}
+
                                     </div>
                                     <div class="form-group">
                                         <input type="password" class="form-control form-control-user"
                                                id="exampleInputPassword" placeholder="Password">
+                                        {!! $errors->first('password', '<span class="text-danger"><h6>:message</h6></span>') !!}
+
                                     </div>
                                     <div class="form-group">
                                         <div class="custom-control custom-checkbox small">

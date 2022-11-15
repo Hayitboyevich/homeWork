@@ -41,20 +41,29 @@
                             <div class="form-group row">
                                 <div class="col-sm-12 mb-6 mb-sm-0">
                                     <input type="text" name="login" class="form-control form-control-user" id="exampleFirstName" placeholder="First Name">
+                                    {!! $errors->first('login', '<span class="text-danger"><h6>:message</h6></span>') !!}
                                 </div>
+
                             </div>
                             <div class="form-group">
                                 <input type="email" name="email" class="form-control form-control-user" id="exampleInputEmail"
                                        placeholder="Email Address">
+                                {!! $errors->first('email', '<span class="text-danger"><h6>:message</h6></span>') !!}
+
                             </div>
+
                             <div class="form-group row">
                                 <div class="col-sm-6 mb-3 mb-sm-0">
                                     <input type="password" name="password" class="form-control form-control-user"
                                            id="exampleInputPassword" placeholder="Password">
+                                    {!! $errors->first('password', '<span class="text-danger"><h6>:message</h6></span>') !!}
                                 </div>
+
+
                                 <div class="col-sm-6">
                                     <input type="password" class="form-control form-control-user"
                                            id="exampleRepeatPassword" name="password_confirmation" placeholder="Repeat Password">
+                                    {!! $errors->first('password.confirmed', '<span class="text-danger"><h6>:message</h6></span>') !!}
                                 </div>
                             </div>
                             <button type="submit" class="btn btn-primary btn-user btn-block">
