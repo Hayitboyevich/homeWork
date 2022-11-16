@@ -11,12 +11,14 @@ class UsersController extends Controller
 
     public function index()
     {
-        $users =  User::with('companies', 'companyUser')
-        ->whereHas('companies.country' , function ($query){
+        $users =  User::whereHas('companies.country' , function ($query){
             $query->where('name', $this->country);
-        }
-        )->get()->toArray();
+        })
+        ->with('companies', function ($_query){
+            $_query->with('country', 'companyUser');
+        })
+        ->get()->toArray();
 
-        dd($users);
+        return $users;
     }
 }

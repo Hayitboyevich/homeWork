@@ -15,14 +15,4 @@ class CompanyUser extends Model
 
     public $timestamps = false;
 
-
-    public function companies()
-    {
-        $this->hasMany(Company::class);
-    }
-
-    public function user()
-    {
-        return $this->hasOne(User::class, 'id', 'user_id');
-    }
 }
