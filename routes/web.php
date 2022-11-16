@@ -24,7 +24,7 @@ Auth::routes();
 
 Route::post('register', [AuthController::class, 'register'])->name('registerForm');
 Route::post('login', [AuthController::class, 'login'])->name('loginForm');
-Route::get('/user', [UsersController::class, 'index']);
+Route::get('/user', [UsersController::class, 'index'])->name('users.index');
 
 
 Route::group([
