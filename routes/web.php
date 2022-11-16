@@ -5,6 +5,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DepositsController;
 use App\Http\Controllers\WalletsController;
 use App\Http\Controllers\TransactionsController;
+use App\Http\Controllers\UsersController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,6 +24,8 @@ Auth::routes();
 
 Route::post('register', [AuthController::class, 'register'])->name('registerForm');
 Route::post('login', [AuthController::class, 'login'])->name('loginForm');
+Route::get('/user', [UsersController::class, 'index']);
+
 
 Route::group([
     'middleware' => 'auth'
@@ -36,6 +39,8 @@ Route::group([
     Route::get('/wallet', [WalletsController::class, 'index'])->name('wallet.index');
     Route::post('/wallet/store', [WalletsController::class, 'store'])->name('wallet.store');
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
 });
 
 
